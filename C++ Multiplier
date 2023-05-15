@@ -1,0 +1,78 @@
+#include <iostream>
+#include <time.h>
+
+using namespace std;
+
+int gl_count = 0;
+int answ;
+
+void Ask() {
+	srand(time(NULL));
+	int a, b;
+	float res;
+	int s_diff, e_diff = 0;
+	if (answ == 1) {
+		s_diff = 1;
+		e_diff = 9;
+	}
+	else if (answ == 2) {
+		s_diff = 9;
+		e_diff = 20;
+	}
+	else if (answ == 3) {
+		s_diff = 1;
+		e_diff = 50;
+	}
+	a = s_diff + rand() % e_diff;
+	b = s_diff + rand() % e_diff;
+	cout << a << "X" << b << "\n";
+	cin >> res;
+	if (res != a * b) {
+		cout << "Too bad\n";
+	}
+	else {
+		gl_count++;
+		cout << "Good job!\n";
+	}
+}
+
+void main() {
+	int comp = 0;
+
+	cout << "Choose difficulty!\n";
+	cout << "1) EZ\n";
+	cout << "2) MID\n";
+	cout << "3) HARD\n";
+
+	cin >> answ;
+
+	switch (answ) {
+	case 1:
+		for (int i = 0; i < 3; i++) {
+			Ask();
+		}
+		comp = 3;
+		break;
+	case 2:
+		for (int i = 0; i < 5; i++) {
+			Ask();
+		}
+		comp = 5;
+		break;
+	case 3:
+		for (int i = 0; i < 10; i++) {
+			Ask();
+		}
+		comp = 10;
+	}
+
+	if (comp == gl_count) {
+		cout << "Perfect!\n\n";
+	}
+	else if (gl_count >= (comp / 2)) {
+		cout << "Not bad, but not good eiter!\n\n";
+	}
+	else {
+		cout << "Go read a book, stupid!";
+	}
+}
