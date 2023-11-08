@@ -1,0 +1,59 @@
+#include <iostream>
+#include <iomanip>
+#include <cstdio>
+#include <cstring>
+#include <random>
+
+using namespace std;
+
+int main()
+{
+    int aich = 0;
+    int usch = 0;
+    string yn;
+    srand(time(NULL));
+    
+    while(true)
+    {
+        aich = 1 + rand() % 2;
+        cout << "Insert your choice: \n1 - Paper\n2 - Scissors\n3 - Stone\n" << endl;
+        cin >> usch;
+        cout << "GPU chose " << aich << endl;
+        switch(usch)
+        {
+            case 1: if (aich == 1) 
+                        cout << "Draw!";
+                    else if(aich == 2)
+                        cout << "You lost!";
+                    else
+                        cout << "You win!";
+                    break;
+            case 2: if (aich == 2)
+                        cout << "Draw!";
+                    else if(aich == 3)
+                        cout << "You lost!";
+                    else
+                        cout << "You win!";
+                    break;
+            case 3: if (aich == 3)
+                        cout << "Draw!";
+                    else if(aich == 1)
+                        cout << "You lost!";
+                    else
+                        cout << "You win!";
+                    break;
+            default:
+                cout << "Thats a wrong choice" << endl;
+                continue;
+        }
+        cout << "\n";
+        cout << "Wanna play again?(y/n)";
+        cout << "\n";
+        cin >> yn;
+        if (yn == "Y" || yn == "y")
+            continue;
+        else
+            break;
+    }
+    return 0;
+}
